@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c3f088c-fd4e-4da3-8898-f4dec6a343f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/image/banner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/name.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/image/wechat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/editor/css/simditor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/editor/js/hotkeys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/editor/js/module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/editor/js/simditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/editor/js/uploader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/login/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/login/js/canvas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/extra/login/js/word.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/homes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/homes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,12 +136,15 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/image" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/extra/login/js" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Code\blog\resources\extra\login\js" />
+      <recent name="C:\Users\Administrator\Code\blog\resources\extra\login\css" />
+      <recent name="C:\Users\Administrator\Code\blog\resources\extra" />
       <recent name="C:\Users\Administrator\Code\blog\public\image" />
     </key>
   </component>

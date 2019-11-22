@@ -11,7 +11,7 @@
     <nav class="navbar-expand-lg bg-black">
         <div class="container">
             <ul id="nav-list">
-                <li class="nav-item"><a href="index.html">首页</a></li>
+                <li class="nav-item"><a href="{{route('root')}}">首页</a></li>
                 <li class="nav-item"><a href="javascript:;">编程</a></li>
                 <li class="nav-item"><a href="javascript:;">算法</a></li>
                 <li class="nav-item"><a href="javascript:;">留言</a></li>
