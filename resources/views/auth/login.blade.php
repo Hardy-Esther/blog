@@ -20,14 +20,27 @@
         <div class="login-center clearfix">
             <div class="login-center-img"><img src="image/name.png"></div>
             <div class="login-center-input">
-                <input type="text" name="" value="" placeholder="请输入您的用户名" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入您的用户名&#39;">
+                <input
+                        type="text"
+                        name="username"
+                        value="" placeholder="请输入您的用户名"
+                        onfocus="this.placeholder=&#39;&#39;"
+                        onblur="this.placeholder=&#39;请输入您的用户名&#39;"
+                >
                 <div class="login-center-input-text">用户名</div>
             </div>
         </div>
         <div class="login-center clearfix">
             <div class="login-center-img"><img src="image/password.png"></div>
             <div class="login-center-input">
-                <input type="password" name="" value="" placeholder="请输入您的密码" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入您的密码&#39;">
+                <input
+                        type="password"
+                        name="password"
+                        value=""
+                        placeholder="请输入您的密码"
+                        onfocus="this.placeholder=&#39;&#39;"
+                        onblur="this.placeholder=&#39;请输入您的密码&#39;"
+                >
                 <div class="login-center-input-text">密码</div>
             </div>
         </div>
@@ -65,18 +78,52 @@
             ele.className = newClass.replace(/^\s+|\s+$/g, '');
         }
     }
-    document.querySelector(".login-button").onclick = function(){
+
+    document.querySelector(".login-button").onclick = function () {
+
+        var username = $("input[name='username']").val();
+        var password = $("input[name='password']").val();
+
+        if (username == "" || password == "") {
+            alert("用户名和密码都不能为空");
+        }
         addClass(document.querySelector(".login"), "active")
-        setTimeout(function(){
+        $.ajax({
+            type: "POST",
+            url: "/login",
+            data: {
+                name: username,
+                password: password,
+                _token: '{{ csrf_token() }}'
+            },
+            dataType: "json",
+            success: function (data) {
+                removeClass(document.querySelector(".login"), "active");
+                removeClass(document.querySelector(".sk-rotating-plane"), "active");
+                document.querySelector(".login").style.display = "block";
+                alert("登陆成功");
+                window.location.href = "/";
+            },
+            error: function (e) {
+                removeClass(document.querySelector(".login"), "active");
+                removeClass(document.querySelector(".sk-rotating-plane"), "active");
+                document.querySelector(".login").style.display = "block";
+                alert("登陆失败！请重新再试！");
+            }
+        });
+        return;
+
+        addClass(document.querySelector(".login"), "active")
+        setTimeout(function () {
             addClass(document.querySelector(".sk-rotating-plane"), "active")
             document.querySelector(".login").style.display = "none"
-        },800)
-        setTimeout(function(){
+        }, 800)
+        setTimeout(function () {
             removeClass(document.querySelector(".login"), "active")
             removeClass(document.querySelector(".sk-rotating-plane"), "active")
             document.querySelector(".login").style.display = "block"
             alert("登录成功")
-        },5000)
+        }, 5000)
     }
 </script>
 </body>
