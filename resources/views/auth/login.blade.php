@@ -101,14 +101,14 @@
                 removeClass(document.querySelector(".login"), "active");
                 removeClass(document.querySelector(".sk-rotating-plane"), "active");
                 document.querySelector(".login").style.display = "block";
-                alert("登陆成功");
+                swal({text: "登陆成功!",icon:"success",button:false});
                 window.location.href = "/";
             },
             error: function (e) {
                 removeClass(document.querySelector(".login"), "active");
                 removeClass(document.querySelector(".sk-rotating-plane"), "active");
                 document.querySelector(".login").style.display = "block";
-                alert("登陆失败！请重新再试！");
+                swal({text: "登陆失败！",icon:"error",button:false});
             }
         });
         return;

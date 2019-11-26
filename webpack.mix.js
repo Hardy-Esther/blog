@@ -16,5 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .version()
     .copyDirectory('resources/extra/editor/js', 'public/js')
     .copyDirectory('resources/extra/login/js', 'public/js')
+    .copyDirectory('resources/extra/select2/js', 'public/js')
     .copyDirectory('resources/extra/editor/css', 'public/css')
-    .copyDirectory('resources/extra/login/css', 'public/css');
+    .copyDirectory('resources/extra/login/css', 'public/css')
+    .copyDirectory('resources/extra/select2/css', 'public/css');

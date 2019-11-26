@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->integer('reply_count')->unsigned()->default(0);
             $table->integer('view_count')->unsigned()->default(0);
             $table->integer('order')->unsigned()->default(0);
+            $table->boolean('is_draft')->default(false)->comment("是否是草稿");
             $table->text('excerpt')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
