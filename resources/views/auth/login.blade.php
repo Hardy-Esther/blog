@@ -111,19 +111,6 @@
                 swal({text: "登陆失败！",icon:"error",button:false});
             }
         });
-        return;
-
-        addClass(document.querySelector(".login"), "active")
-        setTimeout(function () {
-            addClass(document.querySelector(".sk-rotating-plane"), "active")
-            document.querySelector(".login").style.display = "none"
-        }, 800)
-        setTimeout(function () {
-            removeClass(document.querySelector(".login"), "active")
-            removeClass(document.querySelector(".sk-rotating-plane"), "active")
-            document.querySelector(".login").style.display = "block"
-            alert("登录成功")
-        }, 5000)
     }
 </script>
 </body>
