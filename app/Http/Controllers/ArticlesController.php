@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -13,7 +15,9 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view("articles/create");
+        $categories = Category::pluck('name');
+        $tags = Tag::pluck('name');
+        return view("articles/create",compact('categories','tags'));
     }
 
     public function uploadImage()

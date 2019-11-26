@@ -12,36 +12,43 @@
                     <form action="#" method="POST" accept-charset="UTF-8">
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="title" value="" placeholder="请填写标题" required />
+                            <input class="form-control" type="text" name="title" value="" placeholder="请填写标题" required/>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="category_id" required>
                                 <option value="" hidden disabled selected>请选择分类</option>
-                                <option value="1">编程</option>
-                                <option value="2">算法</option>
+                                @foreach($categories as $id => $name)
+                                    <option value="{{$id}}">{{$name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <select class="form-control tags" name="tag_ids" required multiple="multiple" style="width: calc(100% - 110px)">
-                                <option value="1">编程</option>
-                                <option value="2">算法</option>
+                                @foreach($tags as $id => $name)
+                                    <option value="{{$id}}">{{$name}}</option>
+                                @endforeach
                             </select>
-                            <button class="btn btn-primary ml-1" type="button" data-toggle="modal" data-target="#creteTag">创建新标签</button>
+                            <button class="btn btn-primary ml-1" type="button" id="creteTag">创建新标签
+                            </button>
                         </div>
                         <div class="form-group">
-                            <textarea name="excerpt" class="form-control" rows="3" placeholder="请填入一小段文章摘要。" required></textarea>
+                            <textarea name="excerpt" class="form-control" rows="3" placeholder="请填入一小段文章摘要。"
+                                      required></textarea>
                         </div>
                         <div class="form-group">
-                            <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required></textarea>
+                            <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。"
+                                      required></textarea>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                 <input class="form-check-input" type="checkbox" name="is_draft">是否存为草稿
+                                <input class="form-check-input" type="checkbox" name="is_draft">是否存为草稿
                             </label>
                         </div>
 
                         <div class="well well-sm mt-2">
-                            <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="far fa-save mr-2" aria-hidden="true"></i> 保存
+                            </button>
                         </div>
 
                     </form>
@@ -52,31 +59,6 @@
         <!--左侧卡片内容-->
         <div class="col-lg-3 col-md-3 d-none d-sm-block">
             @include("shared._sidebar")
-        </div>
-    </div>
-
-    <!-- 模态框 -->
-    <div class="modal fade" id="creteTag" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <!-- 模态框头部 -->
-                <div class="modal-header">
-                    <h4 class="modal-title">模态框头部</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- 模态框主体 -->
-                <div class="modal-body">
-                    模态框内容..
-                </div>
-
-                <!-- 模态框底部 -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">创建</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                </div>
-
-            </div>
         </div>
     </div>
 @endsection
@@ -94,7 +76,8 @@
 
     <script>
 
-        $(document).ready(function() {
+
+        $(document).ready(function () {
             var editor = new Simditor({
                 textarea: $('#editor'),
                 upload: {
@@ -108,19 +91,47 @@
                 },
                 pasteImage: true,
             });
-        });
-        $(".tags").select2({
-            placeholder: "请选择一个或多个标签",
-            minimumResultsForSearch : -1,// 不展示搜索框
-        });
-        $('#creteTag').on('shown.bs.modal', function (e) {
-            // 关键代码，如没将modal设置为 block，则$modala_dialog.height() 为零
-            $(this).css('display', 'block');
-            var modalHeight=$(window).height() / 2 - $('#creteTag .modal-dialog').height() / 2;
-            $(this).find('.modal-dialog').css({
-                'margin-top': modalHeight
+            $(".tags").select2({
+                placeholder: "请选择一个或多个标签",
+                minimumResultsForSearch: -1,// 不展示搜索框
             });
-        });
+            $("#creteTag").click(function (e) {
+                swal("创建的标签名称:", {
+                    content: "input",
+                    buttons: ['取消', '确定'],
+                    dangerMode: true,
+                }).then((value) => {
+                    if (!value) {
+                        return;
+                    }
+                    var d = {
+                        "id": 2,
+                        "text": "新加的",
+                        "selected": true
+                    };
+
+                    axios({
+                        url: '{{route("tags.store")}}',
+                        method: 'post',
+                        data: {
+                            name: value,
+                            _token: "{{csrf_token()}}"
+                        }
+                    }).then((res)=>{
+                        if(res.status == 200){
+                            var data = res.data.data;
+                            var newOption = new Option(data.name, data.id, false, true);
+                            $('.tags').append(newOption).trigger('change');
+                            swal("创建"+data.name+"标签成功");
+                        }else{
+                            swal("创建标签失败");
+                        }
+                    });
+                });
+            });
+        })
+        ;
+
 
     </script>
 @endsection

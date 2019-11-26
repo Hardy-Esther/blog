@@ -19,6 +19,7 @@ Route::get("/", "HomesController@index")->name('root');
 
 Route::resource("articles", "ArticlesController");
 Route::post('upload_image', 'ArticlesController@uploadImage')->name('articles.upload_image');
+Route::post('tags', 'TagsController@store')->name('tags.store')->middleware('auth');
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
