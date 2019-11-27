@@ -9,23 +9,23 @@
                     <h3 class="text-center mt-1">创建文章</h3>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST" accept-charset="UTF-8">
-
+                    <form action="{{ route("articles.store") }}" method="POST" accept-charset="UTF-8">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <input class="form-control" type="text" name="title" value="" placeholder="请填写标题" required/>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="category_id" required>
                                 <option value="" hidden disabled selected>请选择分类</option>
-                                @foreach($categories as $id => $name)
-                                    <option value="{{$id}}">{{$name}}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control tags" name="tag_ids" required multiple="multiple" style="width: calc(100% - 110px)">
-                                @foreach($tags as $id => $name)
-                                    <option value="{{$id}}">{{$name}}</option>
+                            <select class="form-control tags" name="tag_ids[]" required multiple="multiple" style="width: calc(100% - 110px)">
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
                             </select>
                             <button class="btn btn-primary ml-1" type="button" id="creteTag">创建新标签
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="is_draft">是否存为草稿
+                                <input class="form-check-input" type="checkbox" value="1" name="is_draft">是否存为草稿
                             </label>
                         </div>
 

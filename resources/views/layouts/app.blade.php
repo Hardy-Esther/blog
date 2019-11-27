@@ -11,6 +11,8 @@
 
     <title>@yield('title', '首页') - Hardy'Blog</title>
 
+    <meta name="description" content="@yield('description', "Hardy'Blog 编程、算法学习分享")" />
+    <meta name="keyword" content="@yield('keyword', "Hardy'Blog 编程、算法学习分享")" />
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('styles')
