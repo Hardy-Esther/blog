@@ -40,7 +40,42 @@ class ArticlesController extends Controller
 
     public function show(Article $article)
     {
-        return view("articles/show",compact('article'));
+        return view("articles/show", compact('article'));
+    }
+
+    public function edit(Article $article)
+    {
+        $this->authorize('update', $article);
+        $categories = Category::select("id", "name")->get();
+        $tags = Tag::select("id", "name")->get();
+        $tag_ids = $article->tags()->allRelatedIds()->toArray();
+        return view("articles/edit", compact('article', 'categories', 'tags','tag_ids'));
+    }
+
+    public function update(ArticleRequest $request, Article $article)
+    {
+        $this->authorize('update', $article);
+        $article->update($request->all());
+        //关联标签
+        if ($tag_ids = $request->get('tag_ids')) {
+            //先移除该文章的所有标签
+            $article->tags()->detach();
+            //再关联回来新的标签
+            $article->tags()->sync($tag_ids, false);
+        }
+
+
+        return redirect()->to($article->link())->with('success', '文章更新成功！');
+    }
+
+    public function destroy(Article $article)
+    {
+        $this->authorize('destroy', $article);
+        //先移除该文章的所有标签
+        $article->tags()->detach();
+        $article->delete();
+
+        return $this->success("删除成功！");
     }
 
     public function uploadImage(Request $request, ImageUploadHandler $uploader)

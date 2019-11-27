@@ -101,14 +101,22 @@
                 removeClass(document.querySelector(".login"), "active");
                 removeClass(document.querySelector(".sk-rotating-plane"), "active");
                 document.querySelector(".login").style.display = "block";
-                swal({text: "登陆成功!",icon:"success",button:false});
-                window.location.href = "/";
+
+                if(data.status == true){
+                    swal({text: data.msg, icon: "success", button: "确定"})
+                        .then((value) => {
+                            window.location.href = "/";
+                        });
+                }else{
+                    swal({text: data.msg, icon: "error", button: "确定"});
+                }
+
             },
             error: function (e) {
                 removeClass(document.querySelector(".login"), "active");
                 removeClass(document.querySelector(".sk-rotating-plane"), "active");
                 document.querySelector(".login").style.display = "block";
-                swal({text: "登陆失败！",icon:"error",button:false});
+                swal({text: "登陆失败！", icon: "error", button: "确定"});
             }
         });
     }

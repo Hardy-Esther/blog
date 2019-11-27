@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
 }
