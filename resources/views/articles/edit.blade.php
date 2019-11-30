@@ -105,11 +105,6 @@
                     if (!value) {
                         return;
                     }
-                    var d = {
-                        "id": 2,
-                        "text": "新加的",
-                        "selected": true
-                    };
 
                     axios({
                         url: '{{route("tags.store")}}',

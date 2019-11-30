@@ -11,8 +11,8 @@
 
     <title>@yield('title', '首页') - Hardy'Blog</title>
 
-    <meta name="description" content="@yield('description', "Hardy'Blog 编程、算法学习分享")" />
-    <meta name="keyword" content="@yield('keyword', "Hardy'Blog 编程、算法学习分享")" />
+    <meta name="description" content="@yield('description', "Hardy'Blog 编程、算法学习分享")"/>
+    <meta name="keyword" content="@yield('keyword', "Hardy'Blog 编程、算法学习分享")"/>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('styles')
@@ -37,6 +37,29 @@
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
 @yield("scripts")
+<script>
+    $(document).ready(function () {
+        $("#logout").click(function () {
+            swal({
+                text: "您确定要退出吗？",
+                buttons: ['取消', '确定'],
+            }).then((value) => {
+                if (!value) {
+                    return;
+                }
+                axios({
+                    url: '{{route("logout")}}',
+                    method: 'post',
+                    data: {
+                        _token: "{{csrf_token()}}"
+                    }
+                }).then((res) => {
+                    location.reload();
+                });
+            });
+        });
+    })
+</script>
 </body>
 
 </html>

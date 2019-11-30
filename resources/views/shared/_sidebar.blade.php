@@ -1,3 +1,16 @@
+@auth
+    <div class="card mb-3">
+        <div class="card-header card-title"><strong>{{Auth::user()->name}}</strong></div>
+        <div class="card-body">
+            <p>
+                <a href="{{ route('articles.create') }}" class="btn btn-primary" role="button" style="width: 100%">
+                    创建文章
+                </a>
+            </p>
+            <p><button type="button" class="btn btn-danger" id="logout" style="width: 100%">退出登陆</button></p>
+        </div>
+    </div>
+@endauth
 <div class="card mb-3">
     <div class="card-header card-title"><strong>个人简介</strong></div>
     <div class="card-body">
