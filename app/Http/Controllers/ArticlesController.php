@@ -38,8 +38,12 @@ class ArticlesController extends Controller
         return redirect()->to($article->link())->with('success', '成功文章话题！');
     }
 
-    public function show(Article $article)
+    public function show(Request $request, Article $article)
     {
+
+        if (!empty($article->slug) && $article->slug != $request->slug) {
+            return redirect($article->link(), 301);
+        }
         return view("articles/show", compact('article'));
     }
 
@@ -49,7 +53,7 @@ class ArticlesController extends Controller
         $categories = Category::select("id", "name")->get();
         $tags = Tag::select("id", "name")->get();
         $tag_ids = $article->tags()->allRelatedIds()->toArray();
-        return view("articles/edit", compact('article', 'categories', 'tags','tag_ids'));
+        return view("articles/edit", compact('article', 'categories', 'tags', 'tag_ids'));
     }
 
     public function update(ArticleRequest $request, Article $article)
