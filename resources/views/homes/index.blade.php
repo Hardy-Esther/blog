@@ -3,115 +3,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-index">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="details.html">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="details.html">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="topic-index">
+                @include("articles._list",["articles" => $articles])
             </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="javascript:;">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="javascript:;">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="javascript:;">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="javascript:;">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="javascript:;">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="javascript:;">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="javascript:;">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="javascript:;">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong class="topic-date mr-2">2019-11-21 00:12:05</strong>
-                    <a class="topic-title" href="javascript:;">CentOS 8 不能使用 yum 问题</a>
-                </div>
-                <div class="card-body">
-                    摘要：CentOS 8 不能使用 yum 问题： Failed to synchronize cache for repo 'AppStream'
-                    <a class="ml-1" href="javascript:;">阅读全文</a>
-                </div>
-                <div class="card-footer">
-                    <small>
-                        <span class="mr-2">2019-11-21 00:12:05</span>
-                        <span class="mr-2">阅读：10</span>
-                        <span class="mr-2">标签：linux,CentOS</span>
-                        <span class="mr-2">分类：编程</span>
-                    </small>
-                </div>
-            </div>
+            <p class="text-center"><span class="load">下拉加载更多</span></p>
         </div>
 
         <!--左侧卡片内容-->
@@ -120,3 +16,59 @@
         </div>
     </div>
 @stop
+
+@section("scripts")
+    <script>
+        let page = 1;
+        let pageStatus = true;
+        $(window).scroll(function () {
+
+            if (!pageStatus || $(".topic-index").children(".card").length < 10) {
+                return;
+            } else {
+                $(".load").show();
+            }
+
+            let scrollTop = $(this).scrollTop();
+            let scrollHeight = $(document).height();
+            let windowHeight = $(this).height();
+            if (scrollTop + windowHeight == scrollHeight) {
+                page++;
+                let url = location.href;
+                url = url.replace("?", "?&").split("&");
+                //取出域名
+                let newUrl = url.shift();
+                if (url.length == 0) {
+                    newUrl += "?page=" + page;
+                } else {
+                    //把分页数增加到url数组中
+                    url.push("page=" + page);
+                    newUrl += url.join("&");
+                }
+
+                axios.get(newUrl)
+                    .then((response) => {
+                        if (response.data == "") {
+                            swal("已没有更多数据了")
+                            pageStatus = false
+                            $(".load").hide();
+                        } else {
+                            //这里返回的是HTML代码
+                            $('.topic-index').append(response.data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+                //pageStatus = false;
+                alert(page)
+                //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+                //var page = Number($("#redgiftNextPage").attr('currentpage')) + 1;
+                //redgiftList(page);
+                //$("#redgiftNextPage").attr('currentpage', page + 1);
+
+            }
+        });
+    </script>
+@endsection

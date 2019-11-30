@@ -38,7 +38,7 @@ class Article extends Model
 
     public function readAddNum($num = 1)
     {
-        return $this->increment('view_count',$num);
+        return $this->increment('view_count', $num);
     }
 
     public function scopeWithOrder($query, $order)
@@ -48,7 +48,9 @@ class Article extends Model
             case 'recent':
                 $query->recent();
                 break;
-
+            case 'view':
+                $query->view();
+                break;
             default:
                 $query->recentReplied();
                 break;
@@ -70,9 +72,20 @@ class Article extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
+    public function scopeView($query)
+    {
+        // 按照创建时间排序
+        return $query->orderBy('view_count', 'desc');
+    }
+
     public function link($params = [])
     {
         return route('articles.show', array_merge([$this->id, $this->slug], $params));
+    }
+
+    public function hot()
+    {
+        return $this->select('id', 'title', 'slug', 'view_count')->view()->limit(10)->get();
     }
 
 }

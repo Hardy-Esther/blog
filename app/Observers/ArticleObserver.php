@@ -15,7 +15,7 @@ class ArticleObserver
         $article->body = clean($article->body, 'user_article_body');
 
         // 生成话题摘录
-        $article->excerpt = clean($article->excerpt, 'user_article_body');
+        $article->excerpt = strip_tags($article->excerpt);
     }
 
     public function saved(Article $article)

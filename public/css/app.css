@@ -11173,6 +11173,11 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
+#nav-list .active a {
+  color: #00000A;
+  background-color: #FDFDFE;
+}
+
 .content {
   min-height: 55vh;
 }
@@ -11256,6 +11261,10 @@ footer {
   color: #C6C8CA;
 }
 
+.topic-index .card .card-footer small a {
+  color: #C6C8CA;
+}
+
 .topic-index .card .topic-date {
   display: block;
   color: #FDFDFE;
@@ -11279,6 +11288,11 @@ footer {
 
 .topic-index .card:hover {
   border: 1px solid #007BFF;
+}
+
+.load {
+  color: #cccccc;
+  display: none;
 }
 
 .topic-details .card .card-header,

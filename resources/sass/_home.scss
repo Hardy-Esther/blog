@@ -69,6 +69,12 @@
       text-decoration: none;
     }
   }
+  .active{
+    a{
+      color: #00000A;
+      background-color: #FDFDFE;
+    }
+  }
 }
 
 .content {
@@ -159,6 +165,10 @@ footer {
       small {
         font-size: 90%;
         color: #C6C8CA;
+
+        a {
+          color: #C6C8CA;;
+        }
       }
     }
 
@@ -187,6 +197,11 @@ footer {
   .card:hover {
     border: 1px solid #007BFF;
   }
+}
+
+.load {
+  color: #cccccc;
+  display: none;
 }
 
 .topic-details, .topic-create {

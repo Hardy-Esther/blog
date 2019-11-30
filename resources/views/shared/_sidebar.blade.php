@@ -19,43 +19,30 @@
         <p><img src="{{ asset("image/wechat.jpg") }}" width="100%"></p>
     </div>
 </div>
-
+@if($tags = (new \App\Models\Tag())->getAllCached())
 <div class="card mb-3">
     <div class="card-header card-title"><strong>文章标签</strong></div>
     <div class="card-body">
-        <a href="javascript:;"><span class="tag badge badge-primary">Linux</span></a>
-        <a href="javascript:;"><span class="tag badge badge-info">排序</span></a>
-        <a href="javascript:;"><span class="tag badge badge-success">Golang</span></a>
-        <a href="javascript:;"><span class="tag badge badge-danger">Yum</span></a>
-        <a href="javascript:;"><span class="tag badge badge-warning">Ubuntu</span></a>
-        <a href="javascript:;"><span class="tag badge badge-info">排序</span></a>
-        <a href="javascript:;"><span class="tag badge badge-dark">二叉数</span></a>
+        @foreach($tags as $tag)
+            <a href="{{route('root',['tag_id' => $tag->id])}}" class="mr-1"><span class="tag badge badge-{{tag_class($tag->id)}}">{{$tag->name}}</span></a>
+        @endforeach
     </div>
 </div>
-
+@endif
+@if($article_hot = (new \App\Models\Article())->hot())
 <div class="card mb-3">
     <div class="card-header card-title"><strong>阅读排行榜</strong></div>
     <div class="card-body">
         <ul class="nav">
+            @foreach($article_hot as $index => $hot)
             <li class="nav-item">
-                <a href="javascript:;">1. 我我我我我我我我我多<span class="badge badge-info ml5">10</span></a>
-                <hr>
+                <a href="{{$hot->link()}}">{{$index+1}}. {{$hot->title}}<span class="badge badge-info ml-1">{{$hot->view_count}}</span></a>
+                @if ( ! $loop->last)
+                    <hr>
+                @endif
             </li>
-            <li class="nav-item">
-                <a href="javascript:;">2. beego 代码自动生生成器 - Gii<span class="badge badge-info ml5">10</span></a>
-                <hr>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:;">3. beego 代码自动生成器 - Gii<span class="badge badge-info ml5">0</span></a>
-                <hr>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:;">4.beego 代码自动生成器 - Gii<span class="badge badge-info ml5">0</span></a>
-                <hr>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:;">5.PHP性能监控 - xhprof报告参数详情<span class="badge badge-info ml5">0</span></a>
-            </li>
+            @endforeach
         </ul>
     </div>
 </div>
+@endif

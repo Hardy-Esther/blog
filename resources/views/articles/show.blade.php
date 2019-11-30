@@ -15,8 +15,8 @@
                         <span class="mr-2">
                             标签：
                                 @foreach($article->tags as $tag)
-                                <a class="mr-1" href="javascript:;">{{$tag->name}}</a>
-                            @endforeach
+                                    <a class="mr-1" href="javascript:;">{{$tag->name}}</a>
+                                @endforeach
                         </span>
                         <span class="mr-2">分类：<a href="javascript:;">{{$article->category->name}}</a></span>
                     </small>
