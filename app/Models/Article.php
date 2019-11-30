@@ -36,6 +36,11 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function readAddNum($num = 1)
+    {
+        return $this->increment('view_count',$num);
+    }
+
     public function scopeWithOrder($query, $order)
     {
         // 不同的排序，使用不同的数据读取逻辑
