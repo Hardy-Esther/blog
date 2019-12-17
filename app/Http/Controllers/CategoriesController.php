@@ -13,6 +13,7 @@ class CategoriesController extends Controller
         // 读取分类 ID 关联的话题，并按每 20 条分页
         $articles = $article->withOrder($request->order)
             ->where('category_id', $category->id)
+            ->where('is_draft',false)
             ->paginate(10);
 
         if ($request->ajax()) {

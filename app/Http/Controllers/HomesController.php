@@ -20,6 +20,7 @@ class HomesController extends Controller
         }
         $articles = $article
             ->withOrder($request->order)
+            ->where('is_draft',false)
             ->when($article_ids, function ($query) use ($article_ids) {
                 return $query->whereIn('id', $article_ids);
             })
