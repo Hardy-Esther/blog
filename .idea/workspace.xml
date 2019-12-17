@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4c3f088c-fd4e-4da3-8898-f4dec6a343f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ArticlesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/live2d/assets/waifu-tips.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/live2d/assets/waifu-tips.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +196,7 @@
       <workItem from="1575539047964" duration="2228000" />
       <workItem from="1576147494367" duration="5000" />
       <workItem from="1576518180570" duration="3255000" />
-      <workItem from="1576558269220" duration="6331000" />
+      <workItem from="1576558269220" duration="6433000" />
     </task>
     <servers />
   </component>
