@@ -61,6 +61,7 @@ class ArticlesController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
         $this->authorize('update', $article);
+        $article->is_draft = false;
         $article->update($request->all());
         //关联标签
         if ($tag_ids = $request->get('tag_ids')) {

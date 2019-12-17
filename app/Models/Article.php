@@ -56,7 +56,7 @@ class Article extends Model
                 break;
         }
         // 预加载防止 N+1 问题
-        return $query->with('user', 'category','tags');
+        return $query->with('user', 'category', 'tags');
     }
 
     public function scopeRecentReplied($query)
@@ -85,7 +85,7 @@ class Article extends Model
 
     public function hot()
     {
-        return $this->select('id', 'title', 'slug', 'view_count')->view()->limit(10)->get();
+        return $this->select('id', 'title', 'slug', 'view_count')->view()->where('is_draft', false)->limit(10)->get();
     }
 
 }
