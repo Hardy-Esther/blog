@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleTag;
 use Illuminate\Http\Request;
 
 class HomesController extends Controller
@@ -11,14 +12,19 @@ class HomesController extends Controller
     {
 
         $tag_id = $request->tag_id;
-
+        if ($tag_id) {
+            $article_ids = ArticleTag::where('tag_id', $tag_id)->pluck('article_id')->toArray();
+            empty($article_ids) && $article_ids[] = -1;
+        } else {
+            $article_ids = false;
+        }
         $articles = $article
             ->withOrder($request->order)
-            ->when($tag_id, function ($query) use ($tag_id) {
-                return $query->Join('article_tags', 'articles.id', 'article_id')
-                    ->where('tag_id', $tag_id);
+            ->when($article_ids, function ($query) use ($article_ids) {
+                return $query->whereIn('id', $article_ids);
             })
             ->paginate(10);
+
         if ($request->ajax()) {
             return view("articles/_list", compact("articles"));
         }

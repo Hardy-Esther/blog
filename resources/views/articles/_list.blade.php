@@ -16,7 +16,7 @@
                     <span class="mr-2">
                         标签：
                         @foreach($article->tags as $tag)
-                            <a class="mr-1" href="{{route('root',['tag_id' => $tag->id])}}">{{$tag->name}}</a>
+                            <a class="mr-1 @if(\Request::post('tag_id') == $tag->id) active @endif" href="{{route('root',['tag_id' => $tag->id])}}">{{$tag->name}}</a>
                         @endforeach
                     </span>
                     <span class="mr-2">分类：<a href="{{route('root',['category_id' => $article->category->id])}}">{{$article->category->name}}</a></span>

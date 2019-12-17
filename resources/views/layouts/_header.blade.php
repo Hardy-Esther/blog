@@ -14,7 +14,7 @@
                 <li class="nav-item {{ active_class(if_route('root')) }}"><a href="{{route('root')}}">首页</a></li>
                 <li class="nav-item {{ category_nav_active(1) }}"><a href="{{route('categories.show',1)}}">编程</a></li>
                 <li class="nav-item {{ category_nav_active(2) }}"><a href="{{route('categories.show',2)}}">算法</a></li>
-                <li class="nav-item"><a href="javascript:;">留言</a></li>
+                {{--<li class="nav-item"><a href="javascript:;">留言</a></li>--}}
             </ul>
         </div>
     </nav>

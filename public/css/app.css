@@ -11261,6 +11261,10 @@ footer {
   color: #C6C8CA;
 }
 
+.topic-index .card .card-footer small .active {
+  color: red;
+}
+
 .topic-index .card .card-footer small a {
   color: #C6C8CA;
 }

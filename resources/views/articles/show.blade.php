@@ -15,10 +15,10 @@
                         <span class="mr-2">
                             标签：
                                 @foreach($article->tags as $tag)
-                                    <a class="mr-1" href="javascript:;">{{$tag->name}}</a>
+                                    <a class="mr-1" href="{{route('root',['tag_id' => $tag->id])}}">{{$tag->name}}</a>
                                 @endforeach
                         </span>
-                        <span class="mr-2">分类：<a href="javascript:;">{{$article->category->name}}</a></span>
+                        <span class="mr-2">分类：<a href="{{route('root',['category_id' => $article->category->id])}}">{{$article->category->name}}</a></span>
                     </small>
                 </div>
                 <div class="card-body topic-body">

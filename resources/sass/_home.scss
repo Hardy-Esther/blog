@@ -165,7 +165,9 @@ footer {
       small {
         font-size: 90%;
         color: #C6C8CA;
-
+        .active{
+          color: red;
+        }
         a {
           color: #C6C8CA;;
         }
