@@ -52,7 +52,7 @@ class Article extends Model
                 $query->view();
                 break;
             default:
-                $query->recentReplied();
+                $query->recent();
                 break;
         }
         // 预加载防止 N+1 问题
